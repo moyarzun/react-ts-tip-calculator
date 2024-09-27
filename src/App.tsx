@@ -7,7 +7,7 @@ import TipForm from './components/TipForm'
 
 function App() {
 
-  const { order, addItem, removeItem } = useOrder()
+  const { order, tip, setTip, addItem, removeItem } = useOrder()
 
   return (
     <>
@@ -31,11 +31,15 @@ function App() {
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
           <OrderContents 
             order={order}
-            removeItem={removeItem}/>
-          <TipForm />
+            removeItem={removeItem}
+          />
+          <TipForm
+            setTip={setTip}
+          />
           <OrderTotals
             order ={order}
-            />
+            tip={tip}
+          />
         </div>
       </main>
     </>

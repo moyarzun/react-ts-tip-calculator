@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react'
+
 const tipOptions = [
   {
     id: 'tip-10',
@@ -16,7 +18,11 @@ const tipOptions = [
   },
 ]
 
-export default function TipForm() {
+type TipFormProps = {
+  setTip: Dispatch<SetStateAction<number>>
+}
+
+export default function TipForm({setTip}: TipFormProps) {
   return (
     <div>
       <h3 className='font-black text-2xl'>Propina:</h3>
@@ -24,7 +30,13 @@ export default function TipForm() {
         {tipOptions.map(tip => (
           <div key={tip.id} className='flex gap-2'>
             <label htmlFor={tip.id}>{tip.label}</label>
-            <input type='radio' id={tip.id} name='tip' value={tip.value}/>
+            <input 
+              type='radio' 
+              id={tip.id} 
+              name='tip' 
+              value={tip.value}
+              onChange={ e => setTip(+e.target.value)} // El signo + convierte el valor de String a Number. Se puede usar .valueAsNumber pero no funciona con Radio Buttons
+            />
           </div>
         ))}
         <button className='bg-teal-400 text-white font-black py-2 px-4 rounded-lg'>Calcular</button>

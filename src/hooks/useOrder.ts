@@ -2,7 +2,8 @@ import { useState } from 'react'
 import type { MenuItem, OrderItem } from '../types'
 
 export default function useOrder() {
-  const [order, setOrder] = useState<OrderItem[]>([])
+  const [order, setOrder] = useState<OrderItem[]>([]) //useState va a ser un arreglo de objetos de tipo OrderItem, y se inicializa como un arreglo vacío.
+  const [tip, setTip] = useState(0) // useState se inicializa en cero, lo que implicitamente lo define como Number
 
   const addItem = (item: MenuItem) => {
     const itemExist = order.find(orderItem => orderItem.id === item.id)
@@ -28,6 +29,8 @@ export default function useOrder() {
 
   return {
     order,
+    tip,
+    setTip,
     addItem,
     removeItem
   }
