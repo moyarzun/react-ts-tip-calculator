@@ -35,6 +35,7 @@ function App() {
           />
           <TipForm
             setTip={setTip}
+            tip={tip}
           />
           <OrderTotals
             order ={order}

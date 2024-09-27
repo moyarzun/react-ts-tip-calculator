@@ -20,22 +20,24 @@ const tipOptions = [
 
 type TipFormProps = {
   setTip: Dispatch<SetStateAction<number>>
+  tip: number
 }
 
-export default function TipForm({setTip}: TipFormProps) {
+export default function TipForm({setTip, tip}: TipFormProps) {
   return (
     <div>
       <h3 className='font-black text-2xl'>Propina:</h3>
       <form className='space-y-3'>
-        {tipOptions.map(tip => (
-          <div key={tip.id} className='flex gap-2'>
-            <label htmlFor={tip.id}>{tip.label}</label>
+        {tipOptions.map(tipOption => (
+          <div key={tipOption.id} className='flex gap-2'>
+            <label htmlFor={tipOption.id}>{tipOption.label}</label>
             <input 
               type='radio' 
-              id={tip.id} 
+              id={tipOption.id} 
               name='tip' 
-              value={tip.value}
+              value={tipOption.value}
               onChange={ e => setTip(+e.target.value)} // El signo + convierte el valor de String a Number. Se puede usar .valueAsNumber pero no funciona con Radio Buttons
+              checked={tipOption.value === tip}
             />
           </div>
         ))}
