@@ -10,8 +10,8 @@ type OrderTotalsProps = {
 export default function OrderTotals({order, tip}: OrderTotalsProps) {
   
   const subTotal = useMemo(() => order.reduce((acc, item) => acc + (item.price * item.quantity), 0), [order])
-  const tipAmount = useMemo(() => subTotal * tip, [order, tip]) // Se cambia el calculo de la propina si cambia la orden o la propina indicada
-  const orderTotal = useMemo(() => subTotal + tipAmount, [order, tip])
+  const tipAmount = useMemo(() => subTotal * tip, [subTotal, tip]) // Se cambia el calculo de la propina si cambia la orden o la propina indicada
+  const orderTotal = useMemo(() => subTotal + tipAmount, [subTotal, tipAmount])
 
   return (
     <>
