@@ -4,10 +4,11 @@ import { formatCurrency } from '../helpers'
 
 type OrderTotalsProps = {
   order: OrderItem[],
-  tip: number
+  tip: number,
+  placeOrder: () => void
 }
 
-export default function OrderTotals({order, tip}: OrderTotalsProps) {
+export default function OrderTotals({order, tip, placeOrder}: OrderTotalsProps) {
   
   const subTotal = useMemo(() => order.reduce((acc, item) => acc + (item.price * item.quantity), 0), [order])
   const tipAmount = useMemo(() => subTotal * tip, [subTotal, tip]) // Se cambia el calculo de la propina si cambia el subtotal de la orden o la propina indicada
@@ -31,7 +32,8 @@ export default function OrderTotals({order, tip}: OrderTotalsProps) {
 
         <button 
           className="w-full bg-black p-3 uppercase text-white font-bold mt-10 disabled:opacity-10"
-          disabled={orderTotal === 0} >
+          disabled={orderTotal === 0}
+          onClick={placeOrder} >
           Guardar Orden
         </button>
       </div>

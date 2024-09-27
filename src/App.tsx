@@ -7,7 +7,7 @@ import TipForm from './components/TipForm'
 
 function App() {
 
-  const { order, tip, setTip, addItem, removeItem } = useOrder()
+  const { order, tip, setTip, addItem, removeItem, placeOrder } = useOrder()
 
   return (
     <>
@@ -39,6 +39,7 @@ function App() {
           <OrderTotals
             order ={order}
             tip={tip}
+            placeOrder={placeOrder}
           />
         </div>
       </main>

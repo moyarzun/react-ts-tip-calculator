@@ -39,7 +39,6 @@ export default function TipForm({setTip}: TipFormProps) {
             />
           </div>
         ))}
-        <button className='bg-teal-400 text-white font-black py-2 px-4 rounded-lg'>Calcular</button>
       </form>
     </div>
   )
