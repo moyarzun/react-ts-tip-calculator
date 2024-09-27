@@ -11,6 +11,7 @@ export default function OrderTotals({order, tip}: OrderTotalsProps) {
   
   const subTotal = useMemo(() => order.reduce((acc, item) => acc + (item.price * item.quantity), 0), [order])
   const tipAmount = useMemo(() => subTotal * tip, [order, tip]) // Se cambia el calculo de la propina si cambia la orden o la propina indicada
+  const orderTotal = useMemo(() => subTotal + tipAmount, [order, tip])
 
   return (
     <>
@@ -20,10 +21,10 @@ export default function OrderTotals({order, tip}: OrderTotalsProps) {
           <span className='font-bold'>{formatCurrency(subTotal)}</span>
         </p>
         <p>Propina: {''}
-          <span className='font-bold'>$0</span>
+          <span className='font-bold'>{ formatCurrency(tipAmount) }</span>
         </p>
         <p>Total a pagar: {''}
-          <span className='font-bold'> { formatCurrency(tipAmount) } </span>
+          <span className='font-bold'> { formatCurrency(orderTotal) } </span>
         </p>
 
         <button></button>
