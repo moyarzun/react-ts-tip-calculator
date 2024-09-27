@@ -28,7 +28,6 @@ export default function useOrder() {
   }
 
   const placeOrder = () => {
-    console.log('Guardando...')
     setOrder([])
     setTip(0)
   }
